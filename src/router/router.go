@@ -11,7 +11,8 @@ func New() *fiber.App {
 	engine := html.New("../client/views", ".html")
 	fiber := fiber.New(
 		fiber.Config{
-			Views: engine,
+			Views:       engine,
+			ViewsLayout: "../client/views/_layout",
 		},
 	)
 
