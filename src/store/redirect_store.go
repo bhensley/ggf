@@ -11,7 +11,7 @@ type RedirectStore struct {
 	db *gorm.DB
 }
 
-func NewReidrectStore(db *gorm.DB) *RedirectStore {
+func NewRedirectStore(db *gorm.DB) *RedirectStore {
 	return &RedirectStore{db: db}
 }
 

@@ -8,11 +8,11 @@ import (
 )
 
 func New() *fiber.App {
-	engine := html.New("../client/views", ".html")
+	engine := html.New("./client/views", ".html")
 	fiber := fiber.New(
 		fiber.Config{
 			Views:       engine,
-			ViewsLayout: "../client/views/_layout",
+			ViewsLayout: "./client/views/_layout",
 		},
 	)
 

@@ -19,12 +19,14 @@ type databasesByEnv struct {
 
 func New() *gorm.DB {
 	// TODO: Consider reformatting port to coerce to int
-	dsn := fmt.Sprintf("{%s}:{%s}@tcp({%s}:{%s})/{%s}?charset=utf8mb4&parseTime=True&loc=Local",
+	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local",
 		utils.GetEnv("MYSQL_USERNAME", "root"),
 		utils.GetEnv("MYSQL_PASSWORD", ""),
 		utils.GetEnv("MYSQL_HOST", "localhost"),
 		utils.GetEnv("MYSQL_PORT", "3306"),
 		utils.GetEnv("MYSQL_DATABASE", getDbNameByEnv(utils.GetEnv("ENV", "dev"))))
+
+	fmt.Println("DSN: ", dsn)
 
 	dbLogger := logger.New(
 		log.New(os.Stdout, "\r\n", log.LstdFlags),
@@ -53,8 +55,8 @@ func AutoMigrate(db *gorm.DB) {
 
 func getDbNameByEnv(env string) string {
 	dbs := databasesByEnv{
-		dev:  "dhfbumper_dev",
-		prod: "dhfbumper_prod",
+		dev:  "ggf_dev",
+		prod: "ggf_prod",
 	}
 
 	return dbs.dev
